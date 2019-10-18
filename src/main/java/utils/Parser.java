@@ -20,8 +20,9 @@ public class Parser {
 
         Scanner in = new Scanner(file);
         Set<Mower> mowerSet = new HashSet<>();
-        int width = in.nextInt(), height = in.nextInt();
-        if ((width < 0 || height < 0) ||(width == 0 && height == 0) )
+        int width = in.nextInt();
+        int height = in.nextInt();
+        if ((width < 0 || height < 0) || (width == 0 && height == 0))
             throw new DmLawnException(NEGATIVE_DIMENSIONS);
 
         while (in.hasNext()) {
@@ -32,7 +33,8 @@ public class Parser {
     }
 
     private static Mower parseMower(Scanner in) {
-        int x = in.nextInt(), y = in.nextInt();
+        int x = in.nextInt();
+        int y = in.nextInt();
         OrientationEnum mowerOrientation = OrientationEnum.getByLabel(in.next());
         String actions = in.next();
         if (actions.length() == 0)
